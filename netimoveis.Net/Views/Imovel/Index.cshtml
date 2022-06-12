@@ -1,0 +1,61 @@
+﻿@model List<netimoveis.Net.Models.Imovel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+<a href="/Imovel/FormularioAddImovel">
+    <input id="btnNovo" type="button" value="Novo Imóvel" class="btn btn-primary" href />
+</a>
+
+<br />
+<br />
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Cód. </th>
+        <th>Tipo do Imovel </th>
+        <th>Valor Venda </th>
+        <th>Valor Locação </th>
+        <th>Endereço </th>
+        <th>Número </th>
+        <th>Complemento </th>
+        <th>Bairro </th>
+        <th>Cidade </th>
+        <th>Estado </th>
+        <th>Cep </th>
+        <th colspan="2">Ação </th>
+        
+    </tr>
+    @foreach (var i in Model)
+    {
+<tr>
+    <td>@i.Id</td>
+    <td>@i.TipoImovel</td>
+    <td>@i.ValorVenda</td>
+    <td>@i.ValorLocacao</td>
+    <td>@i.Endereco</td>
+    <td>@i.Numero</td>
+    <td>@i.Complemento</td>
+    <td>@i.Bairro</td>
+    <td>@i.Cidade</td>
+    <td>@i.Estado</td>
+    <td>@i.Cep</td>
+    <td>
+        <a href="@Url.Action("Deletar", "Imovel", new { id = i.Id })" class="btn btn-sm">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+    </td>
+
+    <td>
+        @*<a href="@Url.Action("Editar", "Imovel", new { id = i.Id })" class="btn btn-sm">*@
+        <a href="Imovel/FormularioEditImovel" class="btn btn-sm">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+    </td>
+</tr>
+    }
+</table>  
